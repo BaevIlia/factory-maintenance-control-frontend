@@ -1,10 +1,10 @@
+<template>
+<div class="requests">Test</div>
+</template>
+
 <script setup lang="ts">
 
 </script>
-
-<template>
-
-</template>
 
 <style scoped>
 
