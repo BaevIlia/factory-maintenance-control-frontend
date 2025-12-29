@@ -18,19 +18,19 @@
   display: flex;
 }
   .menu-container{
+    border-right: 5px rgb(195, 195, 195) solid;
     display: flex;
     min-height: 100vh;
-    width: 300px;
-    margin: 0;
+    width: 250px;
+    margin: 0px 20px 0px 0px;
     padding:0;
-    background-color: #4295f5;
+    background-color: #8bc1ff;
   }
   .container-content{
-    border: black solid 1px;
     flex: 1;
     width: 100%;
     min-height: 100vh;
-    margin: 0;
+    margin: 15px 0px 0px 0px;
     padding:0;
   }
 </style>
