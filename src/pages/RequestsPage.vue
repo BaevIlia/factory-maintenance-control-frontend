@@ -26,6 +26,13 @@
         <TableCell>
           {{request.description}}
         </TableCell>
+        <TableCell>
+          <div class="flex justify-end items-center">
+            <Button variant="ghost" size="sm" @click.stop="goToDetail(request.id)" class="navigate-button">
+              <ArrowRightIcon class="text-white"></ArrowRightIcon>
+            </Button>
+          </div>
+        </TableCell>
       </TableRow>
     </TableBody>
   </Table>
@@ -37,12 +44,13 @@ import requests from "../services/requests.ts";
 import {onMounted, ref} from "vue";
 import {  Table,
   TableBody,
-  TableCaption,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow,} from "@/components/ui/table";
+import {Button} from "@/components/ui/button";
+import {ArrowRightIcon} from "lucide-vue-next";
+import router from "@/router";
 interface Request{
   id: number;
   title: string;
@@ -67,6 +75,10 @@ const mockRequests: Request[] = [
   {id: 2, title: "Test1", description: "TestDesc1"}
 ]
 
+const goToDetail = (id: number) => {
+  router.push(`/detail/${id}`);
+}
+
 onMounted(fetchRequests())
 
 </script>
@@ -81,5 +93,10 @@ onMounted(fetchRequests())
  .table-wrapper{
   font-family: var(--ffamily);
   font-weight: 300;
+   margin-right: 20px;
+ }
+ .navigate-button{
+   background: royalblue;
+   cursor: pointer;
  }
 </style>
