@@ -1,11 +1,10 @@
 <template>
-  <div>
-
-  </div>
+  <div>профиль</div>
 </template>
 
 <script setup lang="ts">
-</script>
 
+</script>
 <style scoped>
+
 </style>

@@ -5,7 +5,7 @@
     <TableHeader>
       <TableRow>
         <TableHead>
-          Идентификатор
+          Id
         </TableHead>
         <TableHead>
           Заголовок
@@ -17,7 +17,7 @@
     </TableHeader>
     <TableBody>
       <TableRow v-for="request in mockRequests" :key="request.id">
-        <TableCell class="w-[150px]">
+        <TableCell class="w-[100px]">
           {{request.id}}
         </TableCell>
         <TableCell>
@@ -79,8 +79,6 @@ const goToDetail = (id: number) => {
   router.push(`/detail/${id}`);
 }
 
-onMounted(fetchRequests())
-
 </script>
 
 <style scoped>
@@ -96,7 +94,7 @@ onMounted(fetchRequests())
    margin-right: 20px;
  }
  .navigate-button{
-   background: royalblue;
+   background: #1e386a;
    cursor: pointer;
  }
 </style>

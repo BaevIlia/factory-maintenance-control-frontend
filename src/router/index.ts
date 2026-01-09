@@ -2,6 +2,7 @@ import {createRouter, createWebHistory} from "vue-router";
 import RequestsPage from "../pages/RequestsPage.vue";
 import HomePage from "../pages/HomePage.vue";
 import MainLayout from "../Layouts/MainLayout.vue";
+import ProfilePage from "@/pages/ProfilePage.vue";
 
 const routes = [
     {
@@ -15,11 +16,15 @@ const routes = [
                 component: HomePage
             },
             {
-                path: '/requests',
+                path: 'requests',
                 name: 'Requests',
                 component: RequestsPage
+            },
+            {
+                path: 'profile',
+                name: 'Profile',
+                component: ProfilePage
             }
-
         ]
     },
 ]
