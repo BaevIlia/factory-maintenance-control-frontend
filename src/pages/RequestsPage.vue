@@ -76,7 +76,10 @@ const mockRequests: Request[] = [
 ]
 
 const goToDetail = (id: number) => {
-  router.push(`/detail/${id}`);
+  router.push({
+    name: 'requests-detail',
+    params: {id}
+  });
 }
 
 </script>

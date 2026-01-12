@@ -3,6 +3,7 @@ import RequestsPage from "../pages/RequestsPage.vue";
 import HomePage from "../pages/HomePage.vue";
 import MainLayout from "../Layouts/MainLayout.vue";
 import ProfilePage from "@/pages/ProfilePage.vue";
+import RequestDetailPage from "@/pages/RequestDetailPage.vue";
 
 const routes = [
     {
@@ -16,14 +17,19 @@ const routes = [
                 component: HomePage
             },
             {
-                path: 'requests',
+                path: '/requests',
                 name: 'Requests',
                 component: RequestsPage
             },
             {
-                path: 'profile',
+                path: '/profile',
                 name: 'Profile',
                 component: ProfilePage
+            },
+            {
+                path: '/requests/:id',
+                name: 'requests-detail',
+                component: RequestDetailPage
             }
         ]
     },
