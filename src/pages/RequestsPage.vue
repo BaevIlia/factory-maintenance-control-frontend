@@ -71,8 +71,8 @@ const fetchRequests = async () => {
 }
 
 const mockRequests: Request[] = [
-  {id: 1, title: "Test", description: "TestDesc"},
-  {id: 2, title: "Test1", description: "TestDesc1"}
+  {id: 3, title: "Test", description: "TestDesc"},
+  {id: 4, title: "Test1", description: "TestDesc1"}
 ]
 
 const goToDetail = (id: number) => {

@@ -9,39 +9,80 @@
   <div class="main-content-wrapper">
     <div class="detail-wrapper">
       <div class="statuses-wrapper">
-        <span style="padding-bottom: 15px">Тип:</span>
-        <span style="padding-bottom: 15px">Статус:</span>
-        <span>Приоритет:</span>
+        <span style="padding-bottom: 15px">Тип: {{mockRequestDetail.type}}</span>
+        <span style="padding-bottom: 15px">Статус: {{mockRequestDetail.requestStatus}}</span>
+        <span>Приоритет: {{mockRequestDetail.priority}}</span>
       </div>
       <div class="description-wrapper">
 
       </div>
     </div>
     <div class="rightside-wrapper">
-
+      <span style="padding-bottom: 15px">Создатель: {{mockRequestDetail.authorName}}</span>
+      <span style="padding-bottom: 15px">Ответственный: {{mockRequestDetail.responsibleName}}</span>
+      <span style="padding-bottom: 15px">Дата создания: {{mockRequestDetail.createdAt}}</span>
     </div>
   </div>
 </template>
 
-<script setup>
-import { computed } from 'vue';
+<script setup lang="ts">
+import {computed, onMounted} from 'vue';
 import { useRoute } from 'vue-router';
 import {Button} from "@/components/ui/button/index.js";
+import requests from "@/services/requests.js";
+
+interface RequestDetail{
+  id : number,
+  title : string,
+  description : string,
+  createdAt : Date,
+  requestStatus : string,
+  type : string,
+  priority : string,
+  authorName : string,
+  responsibleName : string,
+}
 
 const route = useRoute();
-
 const requestId = computed(() => route.params.id);
+let requestDetail : ref<RequestDetail>;
+
+const fetchRequestDetail = async () => {
+  try{
+    const id = Number(requestId.value);
+    const response = await requests.getRequest(id);
+
+    requestDetail = response.data;
+  }
+  catch (error) {
+    console.log(error);
+  }
+}
+
+const mockRequestDetail : RequestDetail = {
+  id : 3,
+  title : "Test",
+  description : "TestDesc",
+  createdAt : new Date(2026, 2, 10, 0, 0, 0),
+  requestStatus : "created",
+  type : "maintenance",
+  priority : "medium",
+  authorName : "Test",
+  responsibleName : "Test"
+}
+
+//onMounted(() => fetchRequestDetail());
 </script>
 
 <style scoped>
 .header-wrapper{
-  border: 1px solid black;
+
   width: 100%;
   height: 8%;
   padding: 5px;
 }
 .buttons-wrapper{
-  border: 1px solid black;
+
   width: 100%;
   height: 5%;
   align-content: center;
@@ -55,28 +96,30 @@ const requestId = computed(() => route.params.id);
    display: flex;
  }
 .detail-wrapper{
-  border: black 1px solid;
+
   width: 80%;
   height: 100%;
   padding: 10px;
 }
 .rightside-wrapper{
-  border: black 1px solid;
+  padding: 10px;
   width: 20%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 .update-button{
   width: 100px;
 }
 .statuses-wrapper{
-  border: 1px solid black;
+
   height: 25%;
   padding: 10px;
   display: flex;
   flex-direction: column;
 }
 .description-wrapper{
-  border: 1px solid black;
+
   width: 100%;
   height: 30%;
 }
