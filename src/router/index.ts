@@ -1,13 +1,23 @@
-import {createRouter, createWebHistory} from "vue-router";
+import {createRouter, createWebHistory, type RouteRecordRaw} from "vue-router";
 import RequestsPage from "../pages/RequestsPage.vue";
 import HomePage from "../pages/HomePage.vue";
-import MainLayout from "../Layouts/MainLayout.vue";
+import MainLayout from "@/layouts/MainLayout.vue";
 import ProfilePage from "@/pages/ProfilePage.vue";
 import RequestDetailPage from "@/pages/RequestDetailPage.vue";
+import AuthPage from "@/pages/AuthPage.vue";
 
-const routes = [
+const routes : Array<RouteRecordRaw> = [
     {
-        path: '/',
+      path: '/',
+      redirect: '/auth',
+    },
+    {
+        path: '/auth',
+        name: 'Auth',
+        component: AuthPage,
+    },
+    {
+        path: '/home',
         name: 'MainLayout',
         component: MainLayout,
         children: [
